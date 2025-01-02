@@ -1,22 +1,25 @@
 from fastapi import FastAPI
 import pandas as pd
 import os
-import joblib 
+import joblib
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
 app = FastAPI()
 
+# Path to the CSV file
 csv_file_path = "public/merged_crude_oil_ovx_data.csv"
-model_file_path = "models/crude_oil_volatility_model.pkl"  # Same model path
+
+# Path to the model file in the 'models' folder
+model_file_path = "models/crude_oil_volatility_model.pkl"
 
 # Load the model when the app starts
 try:
-    model = joblib.load(model_file_path)  # Changed to joblib.load()
-    print(f"Model loaded: {type(model)}")  # Print the model type to verify it
+    model = joblib.load(model_file_path)  # Load the model directly from the models folder
+    print(f"Model loaded successfully from {model_file_path}")
 except Exception as e:
-    print(f"Error loading model: {e}")
-    model = None  # In case of an error, set model to None
+    print(f"Error loading model from file: {e}")
+    model = None
 
 # Define a Pydantic model to handle input data
 class PredictionRequest(BaseModel):
@@ -29,7 +32,6 @@ async def read_csv():
     if os.path.exists(csv_file_path):
         # Read the CSV file into a DataFrame
         data = pd.read_csv(csv_file_path)
-
         # Convert the DataFrame to a dictionary and return it as JSON
         data_dict = data.to_dict(orient="records")
         return JSONResponse(content=data_dict)
