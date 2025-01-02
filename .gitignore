@@ -1,0 +1,20 @@
+# Ignore Python bytecode files
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environment folder
+venv/
+
+# VS Code workspace settings
+.vscode/
+
+# MacOS system files
+.DS_Store
+
+# Logs
+*.log
+
+# Vercel-specific files/folders
+.vercel/
+.vercel
