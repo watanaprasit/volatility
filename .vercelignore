@@ -13,3 +13,5 @@ __pycache__/
 
 # Ignore Vercel-specific files if not needed
 .vercel/
+
+scripts/
