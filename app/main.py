@@ -6,7 +6,7 @@ import os
 app = FastAPI()
 
 # Define the path to your CSV file
-csv_file_path = os.path.join("scripts", "static", "merged_crude_oil_ovx_data.csv")
+csv_file_path = "public/merged_crude_oil_ovx_data.csv"
 
 @app.get("/")
 async def read_csv():
