@@ -14,4 +14,13 @@ __pycache__/
 # Ignore Vercel-specific files if not needed
 .vercel/
 
+# Ignore scripts directory if not needed
 scripts/
+
+# Ignore any large data files (e.g., model files, datasets, etc.)
+*.pkl
+*.csv
+*.zip
+
+# Ignore dependencies that can be installed in production environment
+node_modules/
